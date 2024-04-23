@@ -2,12 +2,12 @@ import { program } from 'commander';
 import path from 'path';
 import inquirer from 'inquirer';
 import chalk from "chalk";
-import { exit } from '../util/logger.mjs';
+import { exit } from '../lib/logger.mjs';
 import fs from 'fs';
-import { logWithSpinner, stopSpinner }  from '../util/spinner.mjs';
-import { deletePath } from '../util/io.mjs'
-import downloadTemplate from "../util/downloadTemplate.mjs";
-import replaceFileContent from "../util/replaceFileContent.mjs";
+import { logWithSpinner, stopSpinner }  from '../lib/spinner.mjs';
+import { deletePath } from '../lib/io.mjs'
+import downloadTemplate from "../lib/downloadTemplate.mjs";
+import replaceFileContent from "../lib/replaceFileContent.mjs";
 
 
 let projectName;
@@ -34,8 +34,8 @@ const questions = [
 
 // 下载项目模板
 const startDownloadTemplate = (projectName, templateName) => {
-  downloadTemplate(templateName, projectName , error=>{
-    if(error){
+  downloadTemplate(templateName, projectName , error => {
+    if (error) {
       exit(error);
       return;
     }
@@ -52,11 +52,11 @@ const checkProjectExits = (projectName,templateName) => {
   if (force) {
     if (fs.existsSync(filePath)) {
       // 删除文件夹
-      logWithSpinner(`删除${projectName}...`)
-      deletePath(filePath)
+      logWithSpinner(`删除${projectName}...`);
+      deletePath(filePath);
       stopSpinner(false);
     }
-    startDownloadTemplate(projectName, templateName) // 开始下载模板
+    startDownloadTemplate(projectName, templateName); // 开始下载模板
     return;
   }
   // 判断文件是否存在 询问是否继续
@@ -70,8 +70,8 @@ const checkProjectExits = (projectName,templateName) => {
         exit();
       } else {
         // 删除文件夹
-        logWithSpinner(`删除${projectName}...`)
-        deletePath(filePath)
+        logWithSpinner(`删除${projectName}...`);
+        deletePath(filePath);
         stopSpinner(false);
         startDownloadTemplate(projectName, templateName) // 开始下载模板
       }
@@ -79,12 +79,12 @@ const checkProjectExits = (projectName,templateName) => {
       exit(error);
     })
   } else {
-    startDownloadTemplate(projectName, templateName) // 开始下载模板
+    startDownloadTemplate(projectName, templateName); // 开始下载模板
   }
 }
 
 // 如果用户命令参数带projectName，只需要询问用户选择模板
-if(projectName){
+if (projectName) {
   questions.splice(0,1);
 }
 
@@ -99,11 +99,11 @@ inquirer.prompt(questions).then(result => {
   console.log("模板名称：" + templateName);
   if(!templateName || !projectName){
     // 退出
-    exit()
+    exit();
   }
   // 往下走
   checkProjectExits(projectName,templateName); // 检查目录是否存在
-}).catch(error=>{
+}).catch(error => {
   exit(error);
 })
 

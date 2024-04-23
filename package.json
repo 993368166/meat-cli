@@ -1,6 +1,6 @@
 {
-  "name": "meta-cli",
-  "version": "1.0.0",
+  "name": "meta-universe-cli",
+  "version": "1.0.1",
   "description": "玛特宇宙-前端脚手架",
   "main": "index.js",
   "type": "module",
@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "meta-cli": "bin/meta-cli.mjs"
+    "meta-universe-cli": "bin/index.mjs"
   },
   "keywords": [
     "vue3",
