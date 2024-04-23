@@ -9,7 +9,8 @@ const currentPath = process.cwd();
 export default (templateName, projectName, callback) => {
 
   // 根据模板名称拼接对应仓库的url
-  const url = `https://192.168.110.66:8443/web/template/${templateName}/-/archive/master//${templateName}-master.zip`;
+  // const url = `https://192.168.110.66:8443/web/template/${templateName}/-/archive/master//${templateName}-master.zip`;
+  const url = `https://github.com/993368166/${templateName}/archive/refs/heads/master.zip`;
 
   // 压缩包下载的目录，这里是在系统临时文件目录创建一个目录
   const tempProjectPath = fs.mkdtempSync(path.join(os.tmpdir(), `${projectName}-`));

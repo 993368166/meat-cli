@@ -25,7 +25,6 @@ export const unzipFile = (file, destPath, callBack) => {
     }
   })
     .then(files => {
-      console.log(files, 'files')
       callBack()
     })
     .catch(error => {
