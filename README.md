@@ -2,6 +2,10 @@
 
 通过该脚手架可以帮助您快速搭建项目
 
+## GitHub地址
+
+https://github.com/993368166/meta-cli
+
 ## node版本
 
 推荐node版本 20.0.0+ npm版本 9.8.0
