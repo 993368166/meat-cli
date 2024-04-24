@@ -7,7 +7,6 @@ let pkgJsonString;
 
 try {
   const filePath = new URL('../package.json', import.meta.url);
-  console.log(filePath, 'package.json');
   pkgJsonString = await readFile(filePath, { encoding: 'utf8' });
 } catch (err) {
   console.error(err.message);

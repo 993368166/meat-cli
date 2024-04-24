@@ -1,6 +1,6 @@
 {
   "name": "meta-universe-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "玛特宇宙-前端脚手架",
   "main": "index.js",
   "type": "module",
@@ -10,11 +10,7 @@
   "bin": {
     "meta-universe-cli": "bin/index.mjs"
   },
-  "keywords": [
-    "vue3",
-    "ElementUI Plus",
-    "vite"
-  ],
+  "keywords": ["meta-universe"],
   "author": "lixianmu",
   "license": "ISC",
   "dependencies": {
