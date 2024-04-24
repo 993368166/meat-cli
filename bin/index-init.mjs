@@ -1,36 +1,16 @@
 import { program } from 'commander';
 import path from 'path';
 import inquirer from 'inquirer';
-import chalk from "chalk";
 import { exit } from '../lib/logger.mjs';
 import fs from 'fs';
 import { logWithSpinner, stopSpinner }  from '../lib/spinner.mjs';
 import { deletePath } from '../lib/io.mjs'
 import downloadTemplate from "../lib/downloadTemplate.mjs";
 import replaceFileContent from "../lib/replaceFileContent.mjs";
-
+import questions from "../lib/questions.mjs";
 
 let projectName;
 let force;
-
-const questions = [
-  {
-    type: 'input',
-    name: 'projectName',
-    message: chalk.yellow('请输入项目名称：'),
-  },
-  {
-    type: 'list',
-    name: 'template',
-    message: chalk.yellow('请选择创建项目的模板'),
-    choices: [
-      {
-        name:"玛特宇宙vue3后台管理系统模板",
-        value:"meta-vue3-manage-template"
-      },
-    ]
-  }
-];
 
 // 下载项目模板
 const startDownloadTemplate = (projectName, templateName) => {
@@ -101,8 +81,8 @@ inquirer.prompt(questions).then(result => {
     // 退出
     exit();
   }
-  // 往下走
-  checkProjectExits(projectName,templateName); // 检查目录是否存在
+  // 检查目录是否存在
+  checkProjectExits(projectName,templateName);
 }).catch(error => {
   exit(error);
 })
